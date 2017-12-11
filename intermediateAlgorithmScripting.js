@@ -32,14 +32,67 @@ convertToRoman(36);
 
 // -------->> 4 Wherefore art thou <<--------
 // -------->> 5 Search and Replace <<--------
+function myReplace(str, before, after) {
+  if (before.charAt(0).match(/[A-Z]/)){
+      after = after.slice(0,1).toUpperCase() + after.slice(1);
+  }
+  str = str.replace(before, after);
+  return str;
+}
+
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
+
 // -------->> 6 Pig Latin <<--------
+function translatePigLatin(str) {
+  let vowel = /[aeiouy]/gi;
+  if (vowel.test(str[0])){
+    str = str + 'way';
+  }
+  else {
+    let vowelIndex = str.indexOf(str.match(vowel)[0]); //[0] for the first find vowel
+    str = str.slice(vowelIndex) + str.slice(0, vowelIndex) + 'ay';
+  }
+  
+  return str;
+}
+translatePigLatin("california");
+
 // -------->> 7 DNA Pairing <<--------
 // -------->> 8 Missing letters <<--------
 // -------->> 9 Boo who <<--------
 // -------->> 10 Convert HTML Entities <<--------
 // -------->> 11 Spinal Tap Case <<--------
 // -------->> 12 Sum All Odd Fibonacci Numbers <<--------
+function sumFibs(num) {
+  var arrFib = [1];
+  for (var i = 1; i <=num;) {
+      arrFib.push(i);  
+      i = arrFib[arrFib.length -1] + arrFib[arrFib.length -2];
+  }
+  
+  arrFib = arrFib.reduce((a,b) =>
+    (b%2 !==0) ? a + b : a);
+  
+  return arrFib;
+}
+sumFibs(10);
+
 // -------->> 13 Sum All Primes <<--------
+function sumPrimes(num) {
+  let arr = Array.from({length: num-1}, (v, k) => k+2); 
+  let primes = arr.filter( n => {
+    for (let i=2; i <= Math.sqrt(n); i++){
+      if (n%i === 0){
+        return false;
+      }
+    }
+    return true;
+  });
+  return primes.reduce((a,b) => a+b);
+}
+
+sumPrimes(10);
+
 // -------->> 14 Smallest Common Multiple <<--------
 // -------->> 15 Finders Keepers <<--------
 // -------->> 16 Drop it <<--------

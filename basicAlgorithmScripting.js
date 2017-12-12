@@ -130,3 +130,27 @@ function bouncer(arr) {
 bouncer([7, "ate", "", false, 9]);
 
 // -------->> 14 Seek and Destroy <<--------
+function destroyer(arr) {
+ var args = Array.from(arguments);
+ return arr.filter(item => !args.includes(item));
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+// -------->> 15 Where do I belong <<--------
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort((a,b) => a-b);
+  return arr.indexOf(num);
+}
+
+getIndexToIns([40, 60], 50);
+
+// -------->> 16 Caesars Cipher <<--------
+function rot13(str) {
+  //we want to replace only uppercase letter in String, not space or other marks -> we use /[A-Z]/g
+  //then for each 'a' -> we use modulo to mapped ltters (A is 65, Z is 90 -> there are 26 letters);
+  return str.replace(/[A-Z]/g, a => String.fromCharCode((a.charCodeAt() % 26) +65));  
+}
+
+rot13("SERR PBQR PNZC");

@@ -31,6 +31,11 @@ function convertToRoman(num) {
 convertToRoman(36);
 
 // -------->> 4 Wherefore art thou <<--------
+//Make a function that looks through an array of objects (first argument) and returns an array of all objects,
+//that have matching property and value pairs (second argument).
+
+
+
 // -------->> 5 Search and Replace <<--------
 function myReplace(str, before, after) {
   if (before.charAt(0).match(/[A-Z]/)){
@@ -58,6 +63,38 @@ function translatePigLatin(str) {
 translatePigLatin("california");
 
 // -------->> 7 DNA Pairing <<--------
+function pairElement(str) {
+  str = str.split('');
+  var arr = [];
+  str.forEach(function(item){
+    if (item == 'A'){
+       arr.push(['A','T']);
+     }
+    if (item == 'T'){
+       arr.push(['T','A']);
+     }
+    if (item == 'G'){
+       arr.push(['G','C']);
+     }
+    if (item == 'C'){
+       arr.push(['C','G']);
+     }
+  });
+  return arr;
+}
+
+pairElement("ATCGA");
+
+//ECMS6 version
+function pairElement(str) {
+  str = str.split('');
+  const map = {A:'T', T:'A', C:'G', G:'C'};
+  const arr = str.map(a => [a, map[a]]);
+  return arr;
+}
+
+pairElement("ATCGA");
+
 // -------->> 8 Missing letters <<--------
 // -------->> 9 Boo who <<--------
 // -------->> 10 Convert HTML Entities <<--------
